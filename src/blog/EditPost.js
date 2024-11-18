@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const URI = 'http://localhost:8000/blogs'
+const URI = process.env.REACT_APP_API_URL;
 
 const CompEditPost = () => {
     const [title, setTitle] = useState('');
