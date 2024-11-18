@@ -13,10 +13,17 @@ const CompCreateBlog = () => {
     const navigate = useNavigate()
 
     const store = async (e) => {
-        await e.preventDefault()
-        await axios.post(URI, {title: title, content: content})
-        navigate('/')
-    }
+        e.preventDefault();
+        try {
+            const response = await axios.post(URI, { title, content }, {
+                headers: { 'Content-Type': 'application/json' }
+            });
+            navigate('/');
+        } catch (error) {
+            console.error('Error en la creación del blog:', error.response || error.message);
+            alert('Hubo un error al crear el blog');
+        }
+    };    
 
     return ( 
         <div>
