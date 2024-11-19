@@ -12,12 +12,23 @@ const CompEditPost = () => {
 
     const update = async (e) => {
         e.preventDefault();
-        await axios.put(`${URI}/${id}`, {
-            title: title,
-            content: content
-        });
-        navigate('/');
-    };
+        try {
+            await axios.put(`${URI}/${id}`, {
+                title: title,
+                content: content,
+            });
+            navigate('/');
+        } catch (error) {
+            if (error.response && error.response.status === 403) {
+                // Manejo específico para posts protegidos
+                alert('No se pueden editar las publicaciones realizadas por el admin.');
+            } else {
+                // Manejo genérico de errores
+                console.error('Error al actualizar el blog:', error);
+                alert('No se pudo actualizar el blog. Intenta nuevamente más tarde.');
+            }
+        }
+    };    
 
     const getPostById = useCallback(async () => {
         const res = await axios.get(`${URI}/${id}`);

@@ -25,14 +25,21 @@ const CompShowBlog = () => {
 
     const deleteBlog = async (id) => {
         try {
-            await axios.delete(`${URI}/${id}`)
-            // Vuelve a cargar los blogs después de la eliminación
-            getBlogs()
+            // Intentamos eliminar el blog
+            await axios.delete(`${URI}/${id}`);
+            // Volvemos a cargar los blogs después de la eliminación
+            getBlogs();
         } catch (error) {
-            console.error('Error al eliminar el blog:', error)
-            setError('No se pudo eliminar el blog. Intenta nuevamente más tarde.')
+            if (error.response && error.response.status === 403) {
+                // Manejar el caso de posts protegidos
+                setError('No se pueden eliminar las publicaciones realizadas por el admin.');
+            } else {
+                // Manejo genérico de errores
+                console.error('Error al eliminar el blog:', error);
+                setError('No se pudo eliminar el blog. Intenta nuevamente más tarde.');
+            }
         }
-    }
+    };    
 
     return (
         <div className="container">
