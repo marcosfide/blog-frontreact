@@ -26,27 +26,27 @@ const CompCreateBlog = () => {
     };    
 
     return ( 
-        <div>
+        <div className="container-sm container-form">
             <h3>
                 Create post
             </h3>
             <form onSubmit={store}>
                 <div className="mb-3">
-                    <label className="from-label">Title</label>
+                    <label className="from-label fw-bold">Title</label>
                     <input
                     value={title}
                     onChange={ (e) => setTitle(e.target.value) }
                     type="text"
-                    className="form-control"
+                    className="form-control border border-secondary"
                     />
                 </div>
                 <div className="mb-3">
-                    <label className="from-label">Content</label>
+                    <label className="from-label fw-bold">Content</label>
                     <textarea
                     value={content}
                     onChange={ (e) => setContent(e.target.value) }
                     type="text"
-                    className="form-control"
+                    className="form-control border border-secondary"
                     />
                 </div>
                 <button type="submit" className="btn btn-primary">Send</button>

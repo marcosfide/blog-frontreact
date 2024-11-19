@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./EditPost.css"
 
 const URI = process.env.REACT_APP_API_URL;
 
@@ -42,27 +43,27 @@ const CompEditPost = () => {
 
 
     return ( 
-        <div>
+        <div className="container-sm container-form">
             <h3>
                 Edit post
             </h3>
             <form onSubmit={update}>
                 <div className="mb-3">
-                    <label className="from-label">Title</label>
+                    <label className="from-label fw-bold">Title</label>
                     <input
                     value={title}
                     onChange={ (e) => setTitle(e.target.value) }
                     type="text"
-                    className="form-control"
+                    className="form-control border border-secondary"
                     />
                 </div>
                 <div className="mb-3">
-                    <label className="from-label">Content</label>
+                    <label className="from-label fw-bold">Content</label>
                     <textarea
                     value={content}
                     onChange={ (e) => setContent(e.target.value) }
                     type="text"
-                    className="form-control"
+                    className="form-control border border-secondary"
                     />
                 </div>
                 <button type="submit" className="btn btn-primary">Update</button>
