@@ -15,7 +15,7 @@ const CompCreateBlog = () => {
     const store = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(URI, { title, content }, {
+            await axios.post(`${API_URL}/blogs`, { title, content }, {
                 headers: { 'Content-Type': 'application/json' }
             });
             navigate('/');

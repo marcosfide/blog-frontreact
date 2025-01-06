@@ -16,7 +16,7 @@ const CompShowBlog = () => {
 
     const getBlogs = async () => {
         try {
-            const res = await axios.get(URI);
+            const res = await axios.get(`${API_URL}/blogs`);
             setBlogs(res.data);
         } catch (error) {
             console.error('Error al obtener los blogs:', error);
