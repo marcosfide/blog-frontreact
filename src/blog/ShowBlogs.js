@@ -16,7 +16,7 @@ const CompShowBlog = () => {
 
     const getBlogs = async () => {
         try {            
-            const res = await axios.get(`${URI}/blogs`);
+            const res = await axios.get(`${URI}blogs`);
             setBlogs(res.data);
         } catch (error) {
             console.error('Error al obtener los blogs:', error);
@@ -27,7 +27,7 @@ const CompShowBlog = () => {
     const deleteBlog = async (id) => {
         try {
             // Intentamos eliminar el blog
-            await axios.delete(`${URI}/blogs/${id}`);
+            await axios.delete(`${URI}blogs/${id}`);
             // Volvemos a cargar los blogs después de la eliminación
             getBlogs();
         } catch (error) {

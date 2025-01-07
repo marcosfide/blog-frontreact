@@ -14,7 +14,7 @@ const CompEditPost = () => {
     const update = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`${URI}/blogs/${id}`, {
+            await axios.put(`${URI}blogs/${id}`, {
                 title: title,
                 content: content,
             });
@@ -32,7 +32,7 @@ const CompEditPost = () => {
     };    
 
     const getPostById = useCallback(async () => {        
-        const res = await axios.get(`${URI}/blogs/${id}`);
+        const res = await axios.get(`${URI}blogs/${id}`);
         setTitle(res.data.title);
         setContent(res.data.content);
     }, [id]);
